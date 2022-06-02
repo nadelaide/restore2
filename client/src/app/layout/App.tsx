@@ -62,25 +62,27 @@ const initApp = useCallback(async () => { //memoizes with callback
     <ThemeProvider theme={theme}>
       <ToastContainer position='bottom-right' hideProgressBar />
       <CssBaseline />
-      <Header darkMode={darkMode} handleThemeChange={handleThemeChange}/>
-      <Container>
-        <Switch>
-          {/* can only use one route at a time */}
-          <Route exact path='/' component={HomePage} />
-          <Route exact path='/catalog' component={Catalog} />
-          <Route path='/catalog/:id' component={ProductDetails} />
-          <Route path='/about' component={AboutPage} />
-          <Route path='/contact' component={ContactPage} />
-          <Route path='/server-error' component={ServerError} />
-          <Route path='/basket' component={BasketPage} />
-          <PrivateRoute path='/checkout' component={CheckoutWrapper} />
-          <PrivateRoute path='/orders' component={Orders} />
-          <Route path='/login' component={Login} />
-          <Route path='/register' component={Register} />
-          <Route component={NotFound} />
-        {/* if none of the routes match, not found will show */}
-        </Switch>
-      </Container>
+      <Header darkMode={darkMode} handleThemeChange={handleThemeChange} />
+      <Route exact path='/' component={HomePage} />
+      <Route path={'/(.+)'} render={() => (
+        <Container sx={{ mt: 4 }}>
+          <Switch>
+            {/* can only use one route at a time */}
+            <Route exact path='/catalog' component={Catalog} />
+            <Route path='/catalog/:id' component={ProductDetails} />
+            <Route path='/about' component={AboutPage} />
+            <Route path='/contact' component={ContactPage} />
+            <Route path='/server-error' component={ServerError} />
+            <Route path='/basket' component={BasketPage} />
+            <PrivateRoute path='/checkout' component={CheckoutWrapper} />
+            <PrivateRoute path='/orders' component={Orders} />
+            <Route path='/login' component={Login} />
+            <Route path='/register' component={Register} />
+            <Route component={NotFound} />
+            {/* if none of the routes match, not found will show */}
+          </Switch>
+        </Container>
+      )} />
     </ThemeProvider>
   );
 }

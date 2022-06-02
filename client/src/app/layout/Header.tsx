@@ -39,7 +39,7 @@ export default function Header({darkMode, handleThemeChange} : Props) {
     const itemCount = basket?.items.reduce((sum, item) => sum + item.quantity, 0) //reduce - similar to map - executes a clal back for each item in the array
 
     return (
-        <AppBar position='static' sx={{mb: 4}}>
+        <AppBar position='static' >
             <Toolbar sx={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
 
                 <Box display='flex' alignItems='center'>
