@@ -5,9 +5,12 @@ import { basketSlice } from "../../features/basket/basketSlice";
 import { catalogSlice } from "../../features/catalog/catalogSlice";
 import { counterSlice } from "../../features/contact/counterSlice";
 
-//contains state of redux store
+// export function configureStore() {
+//     return createStore(counterReducer);
+// }
+
 export const store = configureStore({
-    reducer: {
+reducer: {
         counter: counterSlice.reducer,
         basket: basketSlice.reducer,
         catalog: catalogSlice.reducer,
