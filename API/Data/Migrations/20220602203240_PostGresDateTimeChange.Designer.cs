@@ -3,6 +3,7 @@ using System;
 using API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace API.Data.Migrations
 {
     [DbContext(typeof(StoreContext))]
-    partial class StoreContextModelSnapshot : ModelSnapshot
+    [Migration("20220602203240_PostGresDateTimeChange")]
+    partial class PostGresDateTimeChange
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -148,9 +150,6 @@ namespace API.Data.Migrations
                     b.Property<long>("Price")
                         .HasColumnType("bigint");
 
-                    b.Property<string>("PublicId")
-                        .HasColumnType("text");
-
                     b.Property<int>("QuantityInStock")
                         .HasColumnType("integer");
 
@@ -194,14 +193,14 @@ namespace API.Data.Migrations
                         new
                         {
                             Id = 1,
-                            ConcurrencyStamp = "74886feb-8faf-4db7-916c-f13b093e3974",
+                            ConcurrencyStamp = "9ddd2667-5ec5-4b64-8d9f-2c9a5b2f7766",
                             Name = "Member",
                             NormalizedName = "MEMBER"
                         },
                         new
                         {
                             Id = 2,
-                            ConcurrencyStamp = "8b7850cf-d5ff-4573-a86f-2d04c1e7d792",
+                            ConcurrencyStamp = "9fc68a17-2741-4763-9265-1f3285ac1a57",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
