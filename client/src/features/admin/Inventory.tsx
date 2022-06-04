@@ -30,7 +30,7 @@ export default function Inventory() {
         agent.Admin.deleteProduct(id)
             .then(() => dispatch(removeProduct(id)))
             .catch(error => console.log(error))
-            .finally(() => setLoading(false))
+            .finally(() => setLoading(false));
     }
 
     function cancelEdit() {
@@ -80,7 +80,9 @@ export default function Inventory() {
                                 <TableCell align="center">{product.quantityInStock}</TableCell>
                                 <TableCell align="right">
                                     <Button onClick={() => handleSelectProduct(product)} startIcon={<Edit />} />
-                                    <LoadingButton loading={loading && target === product.id} startIcon={<Delete />} onClick={() => handleDeleteProduct(product.id)} color='error' />
+                                    <LoadingButton loading={loading && target === product.id} 
+                                    startIcon={<Delete />} color='error' 
+                                    onClick={() => handleDeleteProduct(product.id)}/>
                                 </TableCell>
                             </TableRow>
                         ))}

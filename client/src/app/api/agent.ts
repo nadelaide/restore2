@@ -46,7 +46,7 @@ axios.interceptors.response.use(async response => {
             toast.error(data.title);
             break;
         case 403:
-            toast.error('You are not allowed to do that!');
+            toast.error('You are not allowed to do that');
             break;
         case 500:
             history.push({
@@ -66,14 +66,14 @@ const requests = {
     put: (url: string, body: {}) => axios.put(url, body).then(responseBody),
     delete: (url: string) => axios.delete(url).then(responseBody),
     postForm: (url: string, data: FormData) => axios.post(url, data, {
-        headers: {'Content-type': 'mulitpart/form-data'}
+        headers: {'Content-type': 'multipart/form-data'}
     }).then(responseBody),
     putForm: (url: string, data: FormData) => axios.put(url, data, {
-        headers: {'Content-type': 'mulitpart/form-data'}
+        headers: {'Content-type': 'multipart/form-data'}
     }).then(responseBody)
 }
 
-//helper to transform data
+//helper function to convert from form to what we need
 function createFormData(item: any) {
     let formData = new FormData();
     for (const key in item) {
